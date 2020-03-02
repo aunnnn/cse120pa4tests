@@ -1,6 +1,6 @@
 # CSE120 PA4 Tests
 
-16 Tests for PA4. 
+16 Tests for PA4 ([Preview](../master/tester/ref_outputs.txt))
 
 ## Installation
 
