@@ -4,7 +4,7 @@
 
 ## Installation
 
-1. Put `pa4tests.c` and `tester.py` under your `pa3` folder.
+1. Put `pa4tests.c` and `tester.py` under your `pa4` folder.
 
 2. Then do this in `Makefile`:
 ```bash
