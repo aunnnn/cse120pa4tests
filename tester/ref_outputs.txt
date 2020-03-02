@@ -1,0 +1,462 @@
+
+-----TEST1-----
+Umix (User-Mode Unix) CSE120 Instructional OS v. 4.06 2/17/20-00:14 11874
+
+***** Using REF Version *****
+N is 1.
+TEST: GetThread from main thread must return 0
+✅ PASSED: Current main thread must have id = 0. (= 0)
+
+System exiting (normal)
+
+----------------
+
+-----TEST2-----
+Umix (User-Mode Unix) CSE120 Instructional OS v. 4.06 2/17/20-00:14 11969
+
+***** Using REF Version *****
+N is 2.
+TEST: Create thread 1 to 9, all must pass successfully and have correct IDs
+✅ PASSED: Create new thread with correct id (expected = 1, actual = 1). (= 1)
+✅ PASSED: Must still stay on thread 0 after create. (= 0)
+✅ PASSED: Create new thread with correct id (expected = 2, actual = 2). (= 2)
+✅ PASSED: Must still stay on thread 0 after create. (= 0)
+Print with param = 1
+Print with param = 2
+
+System exiting (normal)
+
+----------------
+
+-----TEST3-----
+Umix (User-Mode Unix) CSE120 Instructional OS v. 4.06 2/17/20-00:14 12052
+
+***** Using REF Version *****
+N is 3.
+TEST: CreateThread must return -1 if exceed 10 threads
+✅ PASSED: Create new thread should return -1 (actual = -1). (= -1)
+✅ PASSED: Must still stay on thread 0 after create. (= 0)
+✅ PASSED: Create new thread should return -1 (actual = -1). (= -1)
+✅ PASSED: Must still stay on thread 0 after create. (= 0)
+✅ PASSED: Create new thread should return -1 (actual = -1). (= -1)
+✅ PASSED: Must still stay on thread 0 after create. (= 0)
+Print with param = 2
+Print with param = 3
+Print with param = 4
+Print with param = 5
+Print with param = 6
+Print with param = 7
+Print with param = 8
+Print with param = 9
+Print with param = 10
+
+System exiting (normal)
+
+----------------
+
+-----TEST4-----
+Umix (User-Mode Unix) CSE120 Instructional OS v. 4.06 2/17/20-00:14 12124
+
+***** Using REF Version *****
+N is 4.
+TEST: Create thread 1 to 7. Then Thread 3 and 1 leave (by yielding to 3 and let both exits naturally), then 2 must get scheduled due to FIFO.
+* Thread 2 then yields back to thread 0 to create new threads.
+* Next two new thread IDs must continue at 8 and 9. Then another two must then reuse ID 1 and 3.
+* Then all are scheduled with current FIFO order... 7 must exit and then 2 get to continue, MyYieldThread must return -1.
+✅ PASSED: Create new thread with correct id (expected = 1, actual = 1). (= 1)
+✅ PASSED: Create new thread with correct id (expected = 2, actual = 2). (= 2)
+✅ PASSED: Create new thread with correct id (expected = 3, actual = 3). (= 3)
+✅ PASSED: Create new thread with correct id (expected = 4, actual = 4). (= 4)
+✅ PASSED: Create new thread with correct id (expected = 5, actual = 5). (= 5)
+✅ PASSED: Create new thread with correct id (expected = 6, actual = 6). (= 6)
+✅ PASSED: Create new thread with correct id (expected = 7, actual = 7). (= 7)
+Print with param = 3
+Print with param = 1
+✅ PASSED: This must be thread 2. (= 2)
+Print with param = 2
+Test4: 2 Yielding back to 0...
+✅ PASSED: Thread 2 must yield back. (= 2)
+✅ PASSED: New thread must have ID = 8 (actual = 8). (= 8)
+✅ PASSED: New thread must have ID = 9 (actual = 9). (= 9)
+✅ PASSED: New thread must have ID = 1 (actual = 1). (= 1)
+✅ PASSED: New thread must have ID = 3 (actual = 3). (= 3)
+Print with param = 4
+Print with param = 5
+Print with param = 6
+Print with param = 7
+✅ PASSED: Thread 7 must yield back to here to 2, but it yields at thread exit, so it must return -1. (= -1)
+Print with param = 8
+Print with param = 9
+Print with param = 1
+Print with param = 3
+
+System exiting (normal)
+
+----------------
+
+-----TEST5-----
+Umix (User-Mode Unix) CSE120 Instructional OS v. 4.06 2/17/20-00:14 12168
+
+***** Using REF Version *****
+N is 5.
+TEST: Correct parameter is passed to thread's function.
+✅ PASSED: tid must be 1. (= 1)
+✅ PASSED: Test5_ParameterCheck must not be called yet. (= 0)
+✅ PASSED: param must be 999. (= 999)
+✅ PASSED: Current thread must be 1. (= 1)
+✅ PASSED: Thread 1 must run to exit and return -1 here. (= -1)
+✅ PASSED: Test5_ParameterCheck must be called. (= 1)
+
+System exiting (normal)
+
+----------------
+
+-----TEST6-----
+Umix (User-Mode Unix) CSE120 Instructional OS v. 4.06 2/17/20-00:14 12200
+
+***** Using REF Version *****
+N is 6.
+TEST: Yield to illegal IDs must return -1.
+YieldThread: -1 is not a valid thread ID
+✅ PASSED: Yield to thread -1 must return -1. (= -1)
+YieldThread: 10 is not a valid thread ID
+✅ PASSED: Yield to thread 10 must return -1. (= -1)
+YieldThread: Thread 1 does not exist
+✅ PASSED: Yield to thread 1 (invalid) must return -1. (= -1)
+
+System exiting (normal)
+
+----------------
+
+-----TEST7-----
+Umix (User-Mode Unix) CSE120 Instructional OS v. 4.06 2/17/20-00:14 12252
+
+***** Using REF Version *****
+N is 7.
+TEST: Yield to 0 (self) must return 0.
+✅ PASSED: Yield to thread 0 (self) must return 0. (= 0)
+
+System exiting (normal)
+
+----------------
+
+-----TEST8-----
+Umix (User-Mode Unix) CSE120 Instructional OS v. 4.06 2/17/20-00:14 12291
+
+***** Using REF Version *****
+N is 8.
+TEST: Thread 0 creates 9 new threads (id = 1-9) (twice). Each will yield back to 0 must return their correct IDs.
+✅ PASSED: Thread Id must be correct. (= 1)
+✅ PASSED: Newly created thread 1 must yield back it thread 0. (= 1)
+✅ PASSED: Thread Id must be correct. (= 2)
+✅ PASSED: Newly created thread 2 must yield back it thread 0. (= 2)
+✅ PASSED: Thread Id must be correct. (= 3)
+✅ PASSED: Newly created thread 3 must yield back it thread 0. (= 3)
+✅ PASSED: Thread Id must be correct. (= 4)
+✅ PASSED: Newly created thread 4 must yield back it thread 0. (= 4)
+✅ PASSED: Thread Id must be correct. (= 5)
+✅ PASSED: Newly created thread 5 must yield back it thread 0. (= 5)
+✅ PASSED: Thread Id must be correct. (= 6)
+✅ PASSED: Newly created thread 6 must yield back it thread 0. (= 6)
+✅ PASSED: Thread Id must be correct. (= 7)
+✅ PASSED: Newly created thread 7 must yield back it thread 0. (= 7)
+✅ PASSED: Thread Id must be correct. (= 8)
+✅ PASSED: Newly created thread 8 must yield back it thread 0. (= 8)
+✅ PASSED: Thread Id must be correct. (= 9)
+✅ PASSED: Newly created thread 9 must yield back it thread 0. (= 9)
+✅ PASSED: Yielder must be -1 as all are exiting in FIFO order... (= -1)
+✅ PASSED: Yielder must be -1 as all are exiting in FIFO order... (= -1)
+✅ PASSED: Yielder must be -1 as all are exiting in FIFO order... (= -1)
+✅ PASSED: Yielder must be -1 as all are exiting in FIFO order... (= -1)
+✅ PASSED: Yielder must be -1 as all are exiting in FIFO order... (= -1)
+✅ PASSED: Yielder must be -1 as all are exiting in FIFO order... (= -1)
+✅ PASSED: Yielder must be -1 as all are exiting in FIFO order... (= -1)
+✅ PASSED: Yielder must be -1 as all are exiting in FIFO order... (= -1)
+✅ PASSED: Yielder must be -1 as all are exiting in FIFO order... (= -1)
+
+System exiting (normal)
+
+----------------
+
+-----TEST9-----
+Umix (User-Mode Unix) CSE120 Instructional OS v. 4.06 2/17/20-00:14 12321
+
+***** Using REF Version *****
+N is 9.
+TEST: Yield 0 -> 1 -> 2 -> ... -> 9 then back 9 -> 8 -> ... -> 0. Finally let all exits in FIFO.
+✅ PASSED: Current thread must be 1 (= 1)
+✅ PASSED: Current thread must be 2 (= 2)
+✅ PASSED: Current thread must be 3 (= 3)
+✅ PASSED: Current thread must be 4 (= 4)
+✅ PASSED: Current thread must be 5 (= 5)
+✅ PASSED: Current thread must be 6 (= 6)
+✅ PASSED: Current thread must be 7 (= 7)
+✅ PASSED: Current thread must be 8 (= 8)
+✅ PASSED: Current thread must be 9 (= 9)
+✅ PASSED: Thread 9 must yield back to current thread (8). (= 9)
+✅ PASSED: Thread 8 must yield back to current thread (7). (= 8)
+✅ PASSED: Thread 7 must yield back to current thread (6). (= 7)
+✅ PASSED: Thread 6 must yield back to current thread (5). (= 6)
+✅ PASSED: Thread 5 must yield back to current thread (4). (= 5)
+✅ PASSED: Thread 4 must yield back to current thread (3). (= 4)
+✅ PASSED: Thread 3 must yield back to current thread (2). (= 3)
+✅ PASSED: Thread 2 must yield back to current thread (1). (= 2)
+✅ PASSED: Thread 1 must yield back to 0. (= 1)
+✅ PASSED: Yielder to current thread 9 must be -1. (= -1)
+✅ PASSED: Yielder to current thread 8 must be -1. (= -1)
+✅ PASSED: Yielder to current thread 7 must be -1. (= -1)
+✅ PASSED: Yielder to current thread 6 must be -1. (= -1)
+✅ PASSED: Yielder to current thread 5 must be -1. (= -1)
+✅ PASSED: Yielder to current thread 4 must be -1. (= -1)
+✅ PASSED: Yielder to current thread 3 must be -1. (= -1)
+✅ PASSED: Yielder to current thread 2 must be -1. (= -1)
+✅ PASSED: Yielder to current thread 1 must be -1. (= -1)
+
+System exiting (normal)
+
+----------------
+
+-----TEST10-----
+Umix (User-Mode Unix) CSE120 Instructional OS v. 4.06 2/17/20-00:14 12370
+
+***** Using REF Version *****
+N is 10.
+TEST: Multiple params are set correctly for each thread (param = tid^2).
+✅ PASSED: Param should be squared of current thread ID. (= 1)
+✅ PASSED: Param should be squared of current thread ID. (= 4)
+✅ PASSED: Param should be squared of current thread ID. (= 9)
+✅ PASSED: Param should be squared of current thread ID. (= 16)
+✅ PASSED: Param should be squared of current thread ID. (= 25)
+✅ PASSED: Param should be squared of current thread ID. (= 36)
+✅ PASSED: Param should be squared of current thread ID. (= 49)
+✅ PASSED: Param should be squared of current thread ID. (= 64)
+✅ PASSED: Param should be squared of current thread ID. (= 81)
+
+System exiting (normal)
+
+----------------
+
+-----TEST11-----
+Umix (User-Mode Unix) CSE120 Instructional OS v. 4.06 2/17/20-00:14 12434
+
+***** Using REF Version *****
+N is 11.
+TEST: Each thread takes turn to create the rest of 9 threads with correct IDs.
+I.e. thread 0 creates 1-9. Thread 1 creates 2-9,0 etc.
+Test11: Thread 0 is master.
+✅ PASSED: Must have correct thread ID. (= 1)
+✅ PASSED: Must have correct thread ID. (= 2)
+✅ PASSED: Must have correct thread ID. (= 3)
+✅ PASSED: Must have correct thread ID. (= 4)
+✅ PASSED: Must have correct thread ID. (= 5)
+✅ PASSED: Must have correct thread ID. (= 6)
+✅ PASSED: Must have correct thread ID. (= 7)
+✅ PASSED: Must have correct thread ID. (= 8)
+✅ PASSED: Must have correct thread ID. (= 9)
+✅ PASSED: Yield must return -1. (= -1)
+✅ PASSED: Next master thread must have correct thread ID. (= 1)
+Test11: Thread 1 is master.
+✅ PASSED: Must have correct thread ID. (= 2)
+✅ PASSED: Must have correct thread ID. (= 3)
+✅ PASSED: Must have correct thread ID. (= 4)
+✅ PASSED: Must have correct thread ID. (= 5)
+✅ PASSED: Must have correct thread ID. (= 6)
+✅ PASSED: Must have correct thread ID. (= 7)
+✅ PASSED: Must have correct thread ID. (= 8)
+✅ PASSED: Must have correct thread ID. (= 9)
+✅ PASSED: Must have correct thread ID. (= 0)
+✅ PASSED: Yield must return -1. (= -1)
+✅ PASSED: Next master thread must have correct thread ID. (= 2)
+Test11: Thread 2 is master.
+✅ PASSED: Must have correct thread ID. (= 3)
+✅ PASSED: Must have correct thread ID. (= 4)
+✅ PASSED: Must have correct thread ID. (= 5)
+✅ PASSED: Must have correct thread ID. (= 6)
+✅ PASSED: Must have correct thread ID. (= 7)
+✅ PASSED: Must have correct thread ID. (= 8)
+✅ PASSED: Must have correct thread ID. (= 9)
+✅ PASSED: Must have correct thread ID. (= 0)
+✅ PASSED: Must have correct thread ID. (= 1)
+✅ PASSED: Yield must return -1. (= -1)
+✅ PASSED: Next master thread must have correct thread ID. (= 3)
+Test11: Thread 3 is master.
+✅ PASSED: Must have correct thread ID. (= 4)
+✅ PASSED: Must have correct thread ID. (= 5)
+✅ PASSED: Must have correct thread ID. (= 6)
+✅ PASSED: Must have correct thread ID. (= 7)
+✅ PASSED: Must have correct thread ID. (= 8)
+✅ PASSED: Must have correct thread ID. (= 9)
+✅ PASSED: Must have correct thread ID. (= 0)
+✅ PASSED: Must have correct thread ID. (= 1)
+✅ PASSED: Must have correct thread ID. (= 2)
+✅ PASSED: Yield must return -1. (= -1)
+✅ PASSED: Next master thread must have correct thread ID. (= 4)
+Test11: Thread 4 is master.
+✅ PASSED: Must have correct thread ID. (= 5)
+✅ PASSED: Must have correct thread ID. (= 6)
+✅ PASSED: Must have correct thread ID. (= 7)
+✅ PASSED: Must have correct thread ID. (= 8)
+✅ PASSED: Must have correct thread ID. (= 9)
+✅ PASSED: Must have correct thread ID. (= 0)
+✅ PASSED: Must have correct thread ID. (= 1)
+✅ PASSED: Must have correct thread ID. (= 2)
+✅ PASSED: Must have correct thread ID. (= 3)
+✅ PASSED: Yield must return -1. (= -1)
+✅ PASSED: Next master thread must have correct thread ID. (= 5)
+Test11: Thread 5 is master.
+✅ PASSED: Must have correct thread ID. (= 6)
+✅ PASSED: Must have correct thread ID. (= 7)
+✅ PASSED: Must have correct thread ID. (= 8)
+✅ PASSED: Must have correct thread ID. (= 9)
+✅ PASSED: Must have correct thread ID. (= 0)
+✅ PASSED: Must have correct thread ID. (= 1)
+✅ PASSED: Must have correct thread ID. (= 2)
+✅ PASSED: Must have correct thread ID. (= 3)
+✅ PASSED: Must have correct thread ID. (= 4)
+✅ PASSED: Yield must return -1. (= -1)
+✅ PASSED: Next master thread must have correct thread ID. (= 6)
+Test11: Thread 6 is master.
+✅ PASSED: Must have correct thread ID. (= 7)
+✅ PASSED: Must have correct thread ID. (= 8)
+✅ PASSED: Must have correct thread ID. (= 9)
+✅ PASSED: Must have correct thread ID. (= 0)
+✅ PASSED: Must have correct thread ID. (= 1)
+✅ PASSED: Must have correct thread ID. (= 2)
+✅ PASSED: Must have correct thread ID. (= 3)
+✅ PASSED: Must have correct thread ID. (= 4)
+✅ PASSED: Must have correct thread ID. (= 5)
+✅ PASSED: Yield must return -1. (= -1)
+✅ PASSED: Next master thread must have correct thread ID. (= 7)
+Test11: Thread 7 is master.
+✅ PASSED: Must have correct thread ID. (= 8)
+✅ PASSED: Must have correct thread ID. (= 9)
+✅ PASSED: Must have correct thread ID. (= 0)
+✅ PASSED: Must have correct thread ID. (= 1)
+✅ PASSED: Must have correct thread ID. (= 2)
+✅ PASSED: Must have correct thread ID. (= 3)
+✅ PASSED: Must have correct thread ID. (= 4)
+✅ PASSED: Must have correct thread ID. (= 5)
+✅ PASSED: Must have correct thread ID. (= 6)
+✅ PASSED: Yield must return -1. (= -1)
+✅ PASSED: Next master thread must have correct thread ID. (= 8)
+Test11: Thread 8 is master.
+✅ PASSED: Must have correct thread ID. (= 9)
+✅ PASSED: Must have correct thread ID. (= 0)
+✅ PASSED: Must have correct thread ID. (= 1)
+✅ PASSED: Must have correct thread ID. (= 2)
+✅ PASSED: Must have correct thread ID. (= 3)
+✅ PASSED: Must have correct thread ID. (= 4)
+✅ PASSED: Must have correct thread ID. (= 5)
+✅ PASSED: Must have correct thread ID. (= 6)
+✅ PASSED: Must have correct thread ID. (= 7)
+✅ PASSED: Yield must return -1. (= -1)
+✅ PASSED: Next master thread must have correct thread ID. (= 9)
+Test11: Thread 9 is master.
+✅ PASSED: Must have correct thread ID. (= 0)
+✅ PASSED: Must have correct thread ID. (= 1)
+✅ PASSED: Must have correct thread ID. (= 2)
+✅ PASSED: Must have correct thread ID. (= 3)
+✅ PASSED: Must have correct thread ID. (= 4)
+✅ PASSED: Must have correct thread ID. (= 5)
+✅ PASSED: Must have correct thread ID. (= 6)
+✅ PASSED: Must have correct thread ID. (= 7)
+✅ PASSED: Must have correct thread ID. (= 8)
+
+System exiting (normal)
+
+----------------
+
+-----TEST12-----
+Umix (User-Mode Unix) CSE120 Instructional OS v. 4.06 2/17/20-00:14 12468
+
+***** Using REF Version *****
+N is 12.
+TEST: MySchedThread with only thread 0 should not break, it should go back to self
+✅ PASSED: Test is passed.
+
+System exiting (normal)
+
+----------------
+
+-----TEST13-----
+Umix (User-Mode Unix) CSE120 Instructional OS v. 4.06 2/17/20-00:14 12505
+
+***** Using REF Version *****
+N is 13.
+TEST: MySchedThread from 0 to 1 must return -1 on MyYieldThread.
+✅ PASSED: Yielder must be -1 as it gets CPU from MySchedThread (invoked by thread 0). (= -1)
+
+System exiting (normal)
+
+----------------
+
+-----TEST14-----
+Umix (User-Mode Unix) CSE120 Instructional OS v. 4.06 2/17/20-00:14 12538
+
+***** Using REF Version *****
+N is 14.
+TEST: MySchedThread with only thread 1 should not break, it should go back to self
+✅ PASSED: Current thread is 1. (= 1)
+✅ PASSED: Current thread is still 1 after MySchedThread(). (= 1)
+
+System exiting (normal)
+
+----------------
+
+-----TEST15-----
+Umix (User-Mode Unix) CSE120 Instructional OS v. 4.06 2/17/20-00:14 12571
+
+***** Using REF Version *****
+N is 15.
+TEST: MySchedThread with simple FIFO, will schedule next one in chain.
+✅ PASSED: Must get back to here with -1. (= -1)
+✅ PASSED: Counter must be 18 here. (= 18)
+✅ PASSED: Correct order. (= 1)
+✅ PASSED: Correct order. (= 2)
+✅ PASSED: Correct order. (= 3)
+✅ PASSED: Correct order. (= 4)
+✅ PASSED: Correct order. (= 5)
+✅ PASSED: Correct order. (= 6)
+✅ PASSED: Correct order. (= 7)
+✅ PASSED: Correct order. (= 8)
+✅ PASSED: Correct order. (= 9)
+✅ PASSED: Correct order. (= 1)
+✅ PASSED: Correct order. (= 2)
+✅ PASSED: Correct order. (= 3)
+✅ PASSED: Correct order. (= 4)
+✅ PASSED: Correct order. (= 5)
+✅ PASSED: Correct order. (= 6)
+✅ PASSED: Correct order. (= 7)
+✅ PASSED: Correct order. (= 8)
+✅ PASSED: Correct order. (= 9)
+
+System exiting (normal)
+
+----------------
+
+-----TEST16-----
+Umix (User-Mode Unix) CSE120 Instructional OS v. 4.06 2/17/20-00:14 12600
+
+***** Using REF Version *****
+N is 16.
+TEST: Threads exit in FIFO order after setup (2, 6, 8, 5, 7, 3, 9, 1, 4).
+✅ PASSED: Must be -1 as no one explicit yields to it. (= -1)
+✅ PASSED: Must be -1 as no one explicit yields to it. (= -1)
+✅ PASSED: Must be -1 as no one explicit yields to it. (= -1)
+✅ PASSED: Must be -1 as no one explicit yields to it. (= -1)
+✅ PASSED: Must be -1 as no one explicit yields to it. (= -1)
+✅ PASSED: Must be -1 as no one explicit yields to it. (= -1)
+✅ PASSED: Counter must be 9 here. (= 9)
+✅ PASSED: Correct order. (= 2)
+✅ PASSED: Correct order. (= 6)
+✅ PASSED: Correct order. (= 8)
+✅ PASSED: Correct order. (= 5)
+✅ PASSED: Correct order. (= 7)
+✅ PASSED: Correct order. (= 3)
+✅ PASSED: Correct order. (= 9)
+✅ PASSED: Correct order. (= 1)
+✅ PASSED: Correct order. (= 4)
+
+System exiting (normal)
+
+----------------
