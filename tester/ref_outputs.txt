@@ -1,6 +1,6 @@
 
 -----TEST1-----
-Umix (User-Mode Unix) CSE120 Instructional OS v. 4.06 2/17/20-00:14 11874
+Umix (User-Mode Unix) CSE120 Instructional OS v. 4.06 2/17/20-00:14 2497
 
 ***** Using REF Version *****
 N is 1.
@@ -12,7 +12,7 @@ System exiting (normal)
 ----------------
 
 -----TEST2-----
-Umix (User-Mode Unix) CSE120 Instructional OS v. 4.06 2/17/20-00:14 11969
+Umix (User-Mode Unix) CSE120 Instructional OS v. 4.06 2/17/20-00:14 2584
 
 ***** Using REF Version *****
 N is 2.
@@ -29,7 +29,7 @@ System exiting (normal)
 ----------------
 
 -----TEST3-----
-Umix (User-Mode Unix) CSE120 Instructional OS v. 4.06 2/17/20-00:14 12052
+Umix (User-Mode Unix) CSE120 Instructional OS v. 4.06 2/17/20-00:14 2638
 
 ***** Using REF Version *****
 N is 3.
@@ -55,7 +55,7 @@ System exiting (normal)
 ----------------
 
 -----TEST4-----
-Umix (User-Mode Unix) CSE120 Instructional OS v. 4.06 2/17/20-00:14 12124
+Umix (User-Mode Unix) CSE120 Instructional OS v. 4.06 2/17/20-00:14 2671
 
 ***** Using REF Version *****
 N is 4.
@@ -95,7 +95,7 @@ System exiting (normal)
 ----------------
 
 -----TEST5-----
-Umix (User-Mode Unix) CSE120 Instructional OS v. 4.06 2/17/20-00:14 12168
+Umix (User-Mode Unix) CSE120 Instructional OS v. 4.06 2/17/20-00:14 2703
 
 ***** Using REF Version *****
 N is 5.
@@ -112,7 +112,7 @@ System exiting (normal)
 ----------------
 
 -----TEST6-----
-Umix (User-Mode Unix) CSE120 Instructional OS v. 4.06 2/17/20-00:14 12200
+Umix (User-Mode Unix) CSE120 Instructional OS v. 4.06 2/17/20-00:14 2750
 
 ***** Using REF Version *****
 N is 6.
@@ -129,7 +129,7 @@ System exiting (normal)
 ----------------
 
 -----TEST7-----
-Umix (User-Mode Unix) CSE120 Instructional OS v. 4.06 2/17/20-00:14 12252
+Umix (User-Mode Unix) CSE120 Instructional OS v. 4.06 2/17/20-00:14 2781
 
 ***** Using REF Version *****
 N is 7.
@@ -141,7 +141,7 @@ System exiting (normal)
 ----------------
 
 -----TEST8-----
-Umix (User-Mode Unix) CSE120 Instructional OS v. 4.06 2/17/20-00:14 12291
+Umix (User-Mode Unix) CSE120 Instructional OS v. 4.06 2/17/20-00:14 2821
 
 ***** Using REF Version *****
 N is 8.
@@ -179,7 +179,7 @@ System exiting (normal)
 ----------------
 
 -----TEST9-----
-Umix (User-Mode Unix) CSE120 Instructional OS v. 4.06 2/17/20-00:14 12321
+Umix (User-Mode Unix) CSE120 Instructional OS v. 4.06 2/17/20-00:14 2867
 
 ***** Using REF Version *****
 N is 9.
@@ -217,7 +217,7 @@ System exiting (normal)
 ----------------
 
 -----TEST10-----
-Umix (User-Mode Unix) CSE120 Instructional OS v. 4.06 2/17/20-00:14 12370
+Umix (User-Mode Unix) CSE120 Instructional OS v. 4.06 2/17/20-00:14 2902
 
 ***** Using REF Version *****
 N is 10.
@@ -237,7 +237,7 @@ System exiting (normal)
 ----------------
 
 -----TEST11-----
-Umix (User-Mode Unix) CSE120 Instructional OS v. 4.06 2/17/20-00:14 12434
+Umix (User-Mode Unix) CSE120 Instructional OS v. 4.06 2/17/20-00:14 2938
 
 ***** Using REF Version *****
 N is 11.
@@ -367,7 +367,7 @@ System exiting (normal)
 ----------------
 
 -----TEST12-----
-Umix (User-Mode Unix) CSE120 Instructional OS v. 4.06 2/17/20-00:14 12468
+Umix (User-Mode Unix) CSE120 Instructional OS v. 4.06 2/17/20-00:14 2968
 
 ***** Using REF Version *****
 N is 12.
@@ -379,7 +379,7 @@ System exiting (normal)
 ----------------
 
 -----TEST13-----
-Umix (User-Mode Unix) CSE120 Instructional OS v. 4.06 2/17/20-00:14 12505
+Umix (User-Mode Unix) CSE120 Instructional OS v. 4.06 2/17/20-00:14 2999
 
 ***** Using REF Version *****
 N is 13.
@@ -391,7 +391,7 @@ System exiting (normal)
 ----------------
 
 -----TEST14-----
-Umix (User-Mode Unix) CSE120 Instructional OS v. 4.06 2/17/20-00:14 12538
+Umix (User-Mode Unix) CSE120 Instructional OS v. 4.06 2/17/20-00:14 3030
 
 ***** Using REF Version *****
 N is 14.
@@ -404,7 +404,7 @@ System exiting (normal)
 ----------------
 
 -----TEST15-----
-Umix (User-Mode Unix) CSE120 Instructional OS v. 4.06 2/17/20-00:14 12571
+Umix (User-Mode Unix) CSE120 Instructional OS v. 4.06 2/17/20-00:14 3063
 
 ***** Using REF Version *****
 N is 15.
@@ -435,7 +435,7 @@ System exiting (normal)
 ----------------
 
 -----TEST16-----
-Umix (User-Mode Unix) CSE120 Instructional OS v. 4.06 2/17/20-00:14 12600
+Umix (User-Mode Unix) CSE120 Instructional OS v. 4.06 2/17/20-00:14 3106
 
 ***** Using REF Version *****
 N is 16.
@@ -456,6 +456,32 @@ TEST: Threads exit in FIFO order after setup (2, 6, 8, 5, 7, 3, 9, 1, 4).
 ✅ PASSED: Correct order. (= 9)
 ✅ PASSED: Correct order. (= 1)
 ✅ PASSED: Correct order. (= 4)
+
+System exiting (normal)
+
+----------------
+
+-----TEST17-----
+Umix (User-Mode Unix) CSE120 Instructional OS v. 4.06 2/17/20-00:14 3163
+
+***** Using REF Version *****
+N is 17.
+✅ PASSED: Output string must be the same. (Both = "T2: 0 cubed = 0")
+✅ PASSED: Output string must be the same. (Both = "T1: 0 squared = 0")
+✅ PASSED: Output string must be the same. (Both = "T0: square = 0, cube = 0")
+✅ PASSED: Output string must be the same. (Both = "T2: 1 cubed = 1")
+✅ PASSED: Output string must be the same. (Both = "T1: 1 squared = 1")
+✅ PASSED: Output string must be the same. (Both = "T0: square = 1, cube = 1")
+✅ PASSED: Output string must be the same. (Both = "T2: 2 cubed = 8")
+✅ PASSED: Output string must be the same. (Both = "T1: 2 squared = 4")
+✅ PASSED: Output string must be the same. (Both = "T0: square = 4, cube = 8")
+✅ PASSED: Output string must be the same. (Both = "T2: 3 cubed = 27")
+✅ PASSED: Output string must be the same. (Both = "T1: 3 squared = 9")
+✅ PASSED: Output string must be the same. (Both = "T0: square = 9, cube = 27")
+✅ PASSED: Output string must be the same. (Both = "T2: 4 cubed = 64")
+✅ PASSED: Output string must be the same. (Both = "T1: 4 squared = 16")
+✅ PASSED: Output string must be the same. (Both = "T0: square = 16, cube = 64")
+✅ PASSED: Counter must be 15. (= 15)
 
 System exiting (normal)
 
