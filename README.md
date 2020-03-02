@@ -39,9 +39,9 @@ Do this by passing environment variable `OPTION=-DREF` to `make` (which in turn 
 ```bash
 make clean tests OPTION=-DREF && N=1 ./tests
 ```
-*Note: We `clean` every time just to make sure it uses the right version when we switch between `-DREF` and without it.*
+**REF version should pass all tests!**
 
-**REF version should pass all tests.**
+*Note: We `clean` every time just to make sure it uses the right version when we switch between `-DREF` and without it.*
 
 ## Script to run all tests
 
