@@ -1,6 +1,6 @@
 # CSE120 PA4 Tests
 
-16 Tests for PA4 ([Preview](../master/tester/ref_outputs.txt))
+17 Tests for PA4 ([Preview](../master/tester/ref_outputs.txt))
 
 ## Installation
 
@@ -22,7 +22,7 @@ tests:	pa4tests.c aux.h umix.h mycode4.h mycode4.o
 ...
 ```
 
-Now run `make clean tests` and it will build `./tests` executable, which you can run a target test via `N` (from 1 to 16) with:
+Now run `make clean tests` and it will build `./tests` executable, which you can run a target test via `N` (from 1 to 17) with:
 ```bash
 N=1 ./tests
 ```
