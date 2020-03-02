@@ -1,6 +1,6 @@
 # CSE120 PA4 Tests
 
-Tests for PA4.
+16 Tests for PA4. 
 
 ## Installation
 
