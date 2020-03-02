@@ -32,7 +32,7 @@ For convenience just do:
 make clean tests && N=1 ./tests
 ```
 
-Output will be written to `tester/test_outputs.txt` (look like [this](../blob/master/tester/../../../cse120pa4tests/tester/ref_outputs.txt)).
+Output will be written to `tester/test_outputs.txt` (look like [this](../master/tester/ref_outputs.txt)).
 
 ### Running REF (Prof.) version*
 You can run Prof.'s version of the thread package i.e. `InitThreads`, `CreateThread` to compare the results. 
@@ -45,4 +45,4 @@ make clean tests OPTION=-DREF && N=1 ./tests
 
 **REF version should pass all tests.**
 
-Output will be written to `tester/ref_outputs.txt` (look like [this](../blob/master/tester/ref_outputs.txt).
+Output will be written to `tester/ref_outputs.txt` (look like [this](../master/tester/ref_outputs.txt)).
