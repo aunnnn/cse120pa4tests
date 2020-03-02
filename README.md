@@ -32,9 +32,7 @@ For convenience just do:
 make clean tests && N=1 ./tests
 ```
 
-Output will be written to `tester/test_outputs.txt` (look like [this](../master/tester/ref_outputs.txt)).
-
-### Running REF (Prof.) version*
+## Running REF (Prof.) version*
 You can run Prof.'s version of the thread package i.e. `InitThreads`, `CreateThread` to compare the results. 
 
 Do this by passing environment variable `OPTION=-DREF` to `make` (which in turn will pass `-DREF` to `cc` to compile):
@@ -45,4 +43,16 @@ make clean tests OPTION=-DREF && N=1 ./tests
 
 **REF version should pass all tests.**
 
+## Script to run all tests
+
+Run all tests:
+```bash
+python tester.py runtests
+```
+Output will be written to `tester/test_outputs.txt` (look like [this](../master/tester/ref_outputs.txt)).
+
+Run all tests with REF version:
+```bash
+python tester.py runtests -r
+```
 Output will be written to `tester/ref_outputs.txt` (look like [this](../master/tester/ref_outputs.txt)).
