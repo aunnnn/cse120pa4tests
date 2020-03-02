@@ -3,6 +3,7 @@
 #include "mycode4.h"
 #include <assert.h>
 #include <stdio.h>
+#include <string.h>
 #include <stdlib.h>
 
 // Swap our functions with prof's version
@@ -16,19 +17,18 @@
 #endif
 
 // Use for test of result directly (if needed)
-void MyTestAssert(int expression, const char *message)
+void MyTestAssert(int expression, const char *message, int LINE)
 {
 	if (!expression)
 	{
 		DPrintf("❌ ASSERTION FAILURE: %s\n", message);
+		DPrintf("\n 🤔 See assertion at line %d (%s)\n---------\n", LINE, __FILE__);
 		Exit();
-		// Panic("🚨 Abort due to assertion failure 🚨");
 	}
 	else
 	{
 		DPrintf("✅ PASSED: %s\n", message);
 	}
-	// assert(expression);
 }
 
 // (Preferred) Have both actual and expected so we can print and debug. Make sure to pass in correct order.
@@ -39,18 +39,30 @@ void MyTestAssertEqualInt(int actual, int expected, const char *message, int LIN
 		DPrintf("❌ ASSERTION FAILURE: %s. (Actual = %d, Expected = %d)\n", message, actual, expected);
 		DPrintf("\n 🤔 See assertion at line %d (%s)\n---------\n", LINE, __FILE__);
 		Exit();
-		// Panic("🚨 Abort due to assertion failure 🚨"); // Somehow system still exit normally with Panic...
 	}
 	else
 	{
 		DPrintf("✅ PASSED: %s (= %d)\n", message, actual);
 	}
-	// Assert here will delay the crash, just use Exit to end it quickly...
-	// assert(actual == expected);
 }
 
-#define ASSERT MyTestAssert
+void MyTestAssertEqualString(const char *actual, const char *expected, const char *message, int LINE)
+{
+	if (strcmp(actual, expected) != 0)
+	{
+		DPrintf("❌ ASSERTION FAILURE: %s. (Actual = \"%s\", Expected = \"%s\")\n", message, actual, expected);
+		DPrintf("\n 🤔 See assertion at line %d (%s)\n---------\n", LINE, __FILE__);
+		Exit();
+	}
+	else
+	{
+		DPrintf("✅ PASSED: %s (Both = \"%s\")\n", message, actual);
+	}
+}
+
+#define ASSERT(expression, message) MyTestAssert(expression, message, __LINE__)
 #define ASSERT_EQUAL(actual, expected, message) MyTestAssertEqualInt(actual, expected, message, __LINE__)
+#define ASSERT_EQUAL_STR(actual, expected, message) MyTestAssertEqualString(actual, expected, message, __LINE__)
 
 // Global var to store msg string with sprintf
 char msg[200];
@@ -278,6 +290,16 @@ void Test8()
 		ASSERT_EQUAL(tid, expectedId, "Thread Id must be correct.");
 		sprintf(msg, "Newly created thread %d must yield back it thread 0.", expectedId);
 		ASSERT_EQUAL(MyYieldThread(tid), expectedId, msg);
+
+		// if (expectedId == 0) // Thread 0 can't be created since it's running the test here
+		// {
+		// 	ASSERT_EQUAL(tid, -1, "Should not be able to create thread 0 since it is running the test!");
+		// } else {
+		// 	ASSERT_EQUAL(tid, expectedId, "Thread Id must be correct.");
+
+		// 	sprintf(msg, "Newly created thread %d must yield back it thread 0.", expectedId);
+		// 	ASSERT_EQUAL(MyYieldThread(tid), expectedId, msg);
+		// }
 	}
 	MyExitThread();
 }
@@ -575,6 +597,7 @@ void Test16_DummyThread(int param)
 	}
 }
 
+// Test some specific order of exits
 void Test16()
 {
 	DPrintf("TEST: Threads exit in FIFO order after setup (2, 6, 8, 5, 7, 3, 9, 1, 4).\n");
@@ -628,6 +651,103 @@ void Test16()
 	MyExitThread();
 }
 
+// ********************************
+// 	Test17 is pa4c
+// ********************************
+// Test by compare strings directly
+
+#define NUMYIELDS 5
+
+static int Test17_Counter = 0;
+static const char *Test17_ExpectedOutput[15] = {
+	"T2: 0 cubed = 0",
+	"T1: 0 squared = 0",
+	"T0: square = 0, cube = 0",
+	"T2: 1 cubed = 1",
+	"T1: 1 squared = 1",
+	"T0: square = 1, cube = 1",
+	"T2: 2 cubed = 8",
+	"T1: 2 squared = 4",
+	"T0: square = 4, cube = 8",
+	"T2: 3 cubed = 27",
+	"T1: 3 squared = 9",
+	"T0: square = 9, cube = 27",
+	"T2: 4 cubed = 64",
+	"T1: 4 squared = 16",
+	"T0: square = 16, cube = 64"};
+
+static int square, cube; // global variables, shared by threads
+
+void printSquares(int t)
+// t: thread to yield to
+{
+	int i;
+
+	for (i = 0; i < NUMYIELDS; i++)
+	{
+		square = i * i;
+		// Printf("T%d: %d squared = %d\n", MyGetThread(), i, square);
+		sprintf(msg, "T%d: %d squared = %d", MyGetThread(), i, square);
+
+		const char *actual = &msg[0];
+		const char *expected = Test17_ExpectedOutput[Test17_Counter];
+
+		ASSERT_EQUAL_STR(actual, expected, "Output string must be the same.");
+		Test17_Counter++;
+
+		MyYieldThread(t);
+	}
+}
+
+void printCubes(int t)
+// t: thread to yield to
+{
+	int i;
+
+	for (i = 0; i < NUMYIELDS; i++)
+	{
+		cube = i * i * i;
+		// Printf("T%d: %d cubed = %d\n", MyGetThread(), i, cube);
+		sprintf(msg, "T%d: %d cubed = %d", MyGetThread(), i, cube);
+
+		const char *actual = &msg[0];
+		const char *expected = Test17_ExpectedOutput[Test17_Counter];
+
+		ASSERT_EQUAL_STR(actual, expected, "Output string must be the same.");
+		Test17_Counter++;
+
+		MyYieldThread(t);
+	}
+}
+
+void Test17()
+{
+	int i, t, me;
+	void printSquares(), printCubes();
+
+	MyInitThreads();
+
+	me = MyGetThread();
+	t = MyCreateThread(printSquares, me);
+	t = MyCreateThread(printCubes, t);
+
+	for (i = 0; i < NUMYIELDS; i++)
+	{
+		MyYieldThread(t);
+		// Printf("T%d: square = %d, cube = %d\n", me, square, cube);
+		sprintf(msg, "T%d: square = %d, cube = %d", me, square, cube);
+
+		const char *actual = &msg[0];
+		const char *expected = Test17_ExpectedOutput[Test17_Counter];
+
+		ASSERT_EQUAL_STR(actual, expected, "Output string must be the same.");
+		Test17_Counter++;
+	}
+
+	ASSERT_EQUAL(Test17_Counter, 15, "Counter must be 15.");
+	MyExitThread();
+}
+
 void Main()
 {
 #ifdef REF
@@ -640,7 +760,8 @@ void Main()
 		Test1, Test2, Test3, Test4,
 		Test5, Test6, Test7, Test8,
 		Test9, Test10, Test11, Test12,
-		Test13, Test14, Test15, Test16};
+		Test13, Test14, Test15, Test16,
+		Test17};
 
 	char *N = getenv("N");
 

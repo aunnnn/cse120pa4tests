@@ -4,7 +4,7 @@ import os
 import argparse
 
 # Update number here if you add more tests
-N_tests = 16
+N_tests = 17
 
 def run_tests(outputfile, ref_mode=False):
     print('Make clean pa4tests...'),
@@ -26,6 +26,7 @@ def run_tests(outputfile, ref_mode=False):
             cmd = ['./tests']
             my_env = os.environ.copy()
             my_env["N"] = str(i)
+            # result = Popen(cmd, stdout=outFile, stderr=STDOUT, env=my_env).wait()
 
             proc = Popen(cmd, stdout=PIPE, stderr=STDOUT, env=my_env)
             
@@ -46,7 +47,7 @@ def run_tests(outputfile, ref_mode=False):
             else:
                 print("\t\tPassed.")
 
-        print("All tests ran.")
+        print("All tests ran (N={}).".format(N_tests))
 
 parser = argparse.ArgumentParser()
 
@@ -73,6 +74,8 @@ if args.which == 'runtests':
     if is_refmode:
         print("\nRun tests in REF mode (ref_outputs.txt)...\n")
         run_tests('./tester/ref_outputs.txt', ref_mode=True)
+        print("Check output at `ref_outputs.txt`.")
     else:
         print("\nRun tests in My mode (test_outputs.txt)...\n")
         run_tests('./tester/test_outputs.txt', ref_mode=False)
+        print("Check output at `test_outputs.txt`.")
