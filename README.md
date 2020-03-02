@@ -45,4 +45,4 @@ make clean tests OPTION=-DREF && N=1 ./tests
 
 **REF version should pass all tests.**
 
-Output will be written to `tester/ref_outputs.txt` (look like [this](../blob/master/tester/../../../cse120pa4tests/tester/ref_outputs.txt)).
+Output will be written to `tester/ref_outputs.txt` (look like [this](../blob/master/tester/ref_outputs.txt).
