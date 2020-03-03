@@ -45,7 +45,7 @@ def run_tests(outputfile, ref_mode=False):
             if is_failed:
                 print("\t\tFailed!?")
             else:
-                print("\t\tNo errors encountered, compare out to ref to ensure correctness.")
+                print("\t\tNo errors encountered, compare with ref to ensure correctness.")
 
         print("All tests ran (N={}).".format(N_tests))
 
