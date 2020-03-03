@@ -33,7 +33,7 @@ def run_tests(outputfile, ref_mode=False):
             # Detect failure manually
             is_failed = False
             for line in proc.stdout:
-                if 'ASSERTION FAILURE:' in line: 
+                if 'ASSERTION FAILURE:' in line or 'Kernel Panic!' in line: 
                     is_failed = True
                 outFile.write(line)
             proc.wait()
@@ -45,7 +45,7 @@ def run_tests(outputfile, ref_mode=False):
             if is_failed:
                 print("\t\tFailed!?")
             else:
-                print("\t\tPassed.")
+                print("\t\tNo errors encountered, compare with ref to ensure correctness.")
 
         print("All tests ran (N={}).".format(N_tests))
 
