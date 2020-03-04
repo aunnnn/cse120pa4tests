@@ -513,7 +513,7 @@ void Test14()
 }
 
 static size_t Test15_Counter = 0;
-static int Test15_ThreadOrderRecord[18] = 0;
+static int Test15_ThreadOrderRecord[18] = {0};
 
 void Test15_JustCallSchedThreadAndRecord(int param)
 {
