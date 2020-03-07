@@ -99,7 +99,7 @@ void Test2()
 	int i;
 	int tid;
 
-	int NUM_THREADS_TO_CREATE = 2;
+	int NUM_THREADS_TO_CREATE = 9;
 	for (i = 1; i <= NUM_THREADS_TO_CREATE; i++) // Create thread 1 to 9
 	{
 		tid = MyCreateThread(printParam, i);
